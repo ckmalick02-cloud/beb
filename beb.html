@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>For My Love ❤️</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    body {
+      min-height: 100vh;
+      overflow: hidden;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+      position: relative;
+      background:
+        linear-gradient(rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0.35)),
+        url("love1.jpg");
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      transition: background 0.8s ease-in-out;
+    }
+
+    /* floating hearts */
+    .floating-hearts::before,
+    .floating-hearts::after {
+      content: "💖 💕 💘 💞 💗";
+      position: absolute;
+      width: 100%;
+      text-align: center;
+      font-size: 28px;
+      opacity: 0.18;
+      left: 0;
+      pointer-events: none;
+      animation: floatHearts 12s linear infinite;
+      z-index: 0;
+    }
+
+    .floating-hearts::before {
+      top: 8%;
+    }
+
+    .floating-hearts::after {
+      bottom: 10%;
+      animation-delay: 5s;
+    }
+
+    @keyframes floatHearts {
+      0% {
+        transform: translateY(20px);
+        opacity: 0.06;
+      }
+
+      50% {
+        opacity: 0.2;
+      }
+
+      100% {
+        transform: translateY(-20px);
+        opacity: 0.06;
+      }
+    }
+
+    .card {
+      width: 100%;
+      max-width: 430px;
+      background: rgba(255, 255, 255, 0.90);
+      backdrop-filter: blur(8px);
+      border-radius: 24px;
+      box-shadow: 0 18px 45px rgba(0, 0, 0, 0.18);
+      padding: 28px 22px 30px;
+      text-align: center;
+      position: relative;
+      z-index: 2;
+      animation: fadeIn 0.8s ease;
+    }
+
+    @keyframes fadeIn {
+      from {
+        transform: translateY(18px);
+        opacity: 0;
+      }
+
+      to {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+
+    .heart {
+      font-size: 34px;
+      margin-bottom: 10px;
+      animation: pulse 1.3s infinite;
+      color: #ff3d87;
+    }
+
+    @keyframes pulse {
+      0% {
+        transform: scale(1);
+      }
+
+      50% {
+        transform: scale(1.18);
+      }
+
+      100% {
+        transform: scale(1);
+      }
+    }
+
+    .love-photo {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      object-fit: cover;
+      object-position: center;
+      border: 5px solid #ff9bbf;
+      box-shadow: 0 10px 25px rgba(255, 105, 180, 0.25);
+      margin-bottom: 16px;
+    }
+
+    h1 {
+      color: #ff4f93;
+      font-size: 2rem;
+      margin-bottom: 10px;
+    }
+
+    .subtext {
+      color: #666;
+      font-size: 0.98rem;
+      line-height: 1.6;
+      margin-bottom: 18px;
+    }
+
+    .question {
+      color: #222;
+      font-size: 1.22rem;
+      font-weight: 700;
+      margin-bottom: 20px;
+      line-height: 1.5;
+    }
+
+    .buttons {
+      position: relative;
+      width: 100%;
+      height: 95px;
+      margin-top: 8px;
+    }
+
+    button {
+      border: none;
+      outline: none;
+      cursor: pointer;
+      font-size: 1rem;
+      font-weight: 700;
+      padding: 12px 22px;
+      border-radius: 999px;
+      transition: 0.25s ease;
+      box-shadow: 0 8px 18px rgba(0, 0, 0, 0.12);
+    }
+
+    #yesBtn {
+      background: linear-gradient(135deg, #ff5fa2, #ff8cc0);
+      color: white;
+      position: absolute;
+      left: 18%;
+      top: 18px;
+    }
+
+    #yesBtn:hover {
+      transform: scale(1.06);
+    }
+
+    #noBtn {
+      background: #f2f2f2;
+      color: #555;
+      position: absolute;
+      right: 18%;
+      top: 18px;
+    }
+
+    .tiny-text {
+      margin-top: 14px;
+      font-size: 0.92rem;
+      color: #777;
+    }
+
+    /* Final screen */
+    .hidden {
+      display: none !important;
+    }
+
+    .final-screen {
+      width: 100%;
+      max-width: 520px;
+      background: rgba(255, 255, 255, 0.88);
+      backdrop-filter: blur(8px);
+      border-radius: 24px;
+      box-shadow: 0 18px 45px rgba(0, 0, 0, 0.18);
+      padding: 28px 22px 30px;
+      text-align: center;
+      position: relative;
+      z-index: 3;
+      animation: popIn 0.7s ease;
+    }
+
+    @keyframes popIn {
+      from {
+        transform: scale(0.92);
+        opacity: 0;
+      }
+
+      to {
+        transform: scale(1);
+        opacity: 1;
+      }
+    }
+
+    .final-screen h2 {
+      color: #ff4f93;
+      font-size: 2rem;
+      margin-bottom: 14px;
+    }
+
+    .final-message {
+      color: #444;
+      line-height: 1.8;
+      font-size: 1rem;
+      margin-bottom: 20px;
+      text-align: left;
+    }
+
+    .final-tag {
+      color: #ff4f93;
+      font-weight: 700;
+      font-size: 1rem;
+      margin-top: 10px;
+    }
+
+    .final-photo {
+      width: 180px;
+      height: 180px;
+      border-radius: 18px;
+      object-fit: cover;
+      object-position: center;
+      border: 4px solid #ffb1cc;
+      box-shadow: 0 10px 25px rgba(255, 105, 180, 0.25);
+      margin-bottom: 16px;
+    }
+
+    /* Confetti hearts */
+    .confetti {
+      position: fixed;
+      top: -20px;
+      pointer-events: none;
+      z-index: 999;
+      transition: transform 3s linear, opacity 3s linear;
+    }
+
+    @media (max-width: 480px) {
+
+      .card,
+      .final-screen {
+        padding: 22px 16px 26px;
+      }
+
+      .love-photo {
+        width: 125px;
+        height: 125px;
+      }
+
+      .final-photo {
+        width: 150px;
+        height: 150px;
+      }
+
+      h1 {
+        font-size: 1.7rem;
+      }
+
+      .question {
+        font-size: 1.08rem;
+      }
+
+      #yesBtn {
+        left: 12%;
+      }
+
+      #noBtn {
+        right: 12%;
+      }
+    }
+  </style>
+</head>
+
+<body id="pageBody">
+  <div class="floating-hearts"></div>
+
+  <!-- FIRST SCREEN -->
+  <div class="card" id="mainCard">
+    <div class="heart">❤️</div>
+
+    <img src="love1.jpg" alt="My love" class="love-photo" />
+
+    <h1>Hey My Love 💖</h1>
+
+    <p class="subtext">
+      I know I could say this in a normal text, but you deserve something more special,
+      something made with love, just for you. ✨
+    </p>
+
+    <p class="question">
+      Will you keep being my girl, my safe place, my happiness, and my forever? 🥺❤️
+    </p>
+
+    <div class="buttons">
+      <button id="yesBtn">Yes, always ❤️</button>
+      <button id="noBtn">No 🙈</button>
+    </div>
+
+    <p class="tiny-text">Be careful… the No button doesn’t believe in breaking my heart 😭💕</p>
+  </div>
+
+  <!-- FINAL SCREEN AFTER YES -->
+  <div class="final-screen hidden" id="finalScreen">
+    <img src="love2.jpg" alt="Us together" class="final-photo" />
+
+    <h2>You said yes 😭❤️</h2>
+
+    <div class="final-message">
+      My love, thank you for choosing me again and for giving my heart a home in you. 💖<br><br>
+
+      I promise to love you genuinely, protect your heart, respect you, and never take your love for granted.
+      I promise to stand by you, to be honest with you, to support you, and to keep choosing you even on the hard days.
+      I want to be your peace, your comfort, your loudest supporter, and the one who keeps reminding you how deeply
+      loved you are. ✨<br><br>
+
+      I can’t promise a perfect life, but I can promise you a real heart, real effort, real loyalty, and a love that
+      keeps trying every single day.
+      I’ll do my best to make sure you never regret choosing me, because having you in my life is one of the most
+      beautiful blessings I could ever ask for. 💕
+    </div>
+
+    <div class="final-tag">Forever starts with us 🤍</div>
+  </div>
+
+  <script>
+    const noBtn = document.getElementById("noBtn");
+    const yesBtn = document.getElementById("yesBtn");
+    const mainCard = document.getElementById("mainCard");
+    const finalScreen = document.getElementById("finalScreen");
+    const pageBody = document.getElementById("pageBody");
+
+    function moveNoButton() {
+      const container = mainCard.querySelector(".buttons");
+      const containerRect = container.getBoundingClientRect();
+      const btnRect = noBtn.getBoundingClientRect();
+
+      const maxX = containerRect.width - btnRect.width - 10;
+      const maxY = containerRect.height - btnRect.height - 5;
+
+      const randomX = Math.floor(Math.random() * Math.max(maxX, 20));
+      const randomY = Math.floor(Math.random() * Math.max(maxY, 20));
+
+      noBtn.style.left = randomX + "px";
+      noBtn.style.top = randomY + "px";
+      noBtn.style.right = "auto";
+      noBtn.style.position = "absolute";
+    }
+
+    noBtn.addEventListener("mouseenter", moveNoButton);
+    noBtn.addEventListener("click", moveNoButton);
+    noBtn.addEventListener("touchstart", function (e) {
+      e.preventDefault();
+      moveNoButton();
+    });
+
+    yesBtn.addEventListener("click", () => {
+      // change background to second picture
+      pageBody.style.background =
+        'linear-gradient(rgba(0,0,0,0.38), rgba(0,0,0,0.38)), url("love2.jpg") center/cover no-repeat';
+
+      // hide first screen, show final screen
+      mainCard.classList.add("hidden");
+      finalScreen.classList.remove("hidden");
+
+      createConfetti();
+    });
+
+    function createConfetti() {
+      const emojis = ["💖", "💕", "💘", "✨", "🥰", "❤️"];
+      for (let i = 0; i < 40; i++) {
+        const confetti = document.createElement("div");
+        confetti.className = "confetti";
+        confetti.innerHTML = emojis[Math.floor(Math.random() * emojis.length)];
+        confetti.style.left = Math.random() * 100 + "vw";
+        confetti.style.fontSize = (Math.random() * 16 + 18) + "px";
+        confetti.style.opacity = "1";
+        document.body.appendChild(confetti);
+
+        setTimeout(() => {
+          confetti.style.transform =
+            `translateY(${window.innerHeight + 100}px) rotate(${Math.random() * 360}deg)`;
+          confetti.style.opacity = "0";
+        }, 50);
+
+        setTimeout(() => {
+          confetti.remove();
+        }, 3200);
+      }
+    }
+  </script>
+</body>
+
+</html>
